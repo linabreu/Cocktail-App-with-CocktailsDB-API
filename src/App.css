@@ -1,38 +1,221 @@
 .App {
-  text-align: center;
+  background-color: 	#FFB392;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.pink-nav{
+  background-color: #e8476d;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.logo {
+  height:50px;
+  width:50px;
+  display:inline-block;
+}
+.retro-text {
+  font-family: 'Ranchers', cursive;
+  text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
+}
+.logo-text{
+
+  font-size:50px;
+  letter-spacing: 4px;
+  
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.hero-text{
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  font-family: 'Mooli', sans-serif;
+  text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
+
 }
 
-.App-link {
-  color: #61dafb;
+.nav-link{
+  font-family: 'Montserrat', cursive;
+  font-family: 'Mooli', sans-serif;
+  font-size:16px;
+  font-weight:700;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.nav-link:hover{
+  color:white;;
+  background-color: #942943;
 }
+
+.large-font{
+  font-size:50px;
+}
+
+.hero-image{
+  background-image: url(../src/Images/drink-header.jpeg);
+  background-size:cover;
+  background-position:center;
+  height:300px;
+  
+  
+}
+
+.search-bar{
+  width:70%;
+}
+
+.top-margin{
+  margin-top:50px;
+}
+
+.btn-primary {
+  color:#f3692f;
+}
+
+.orange-btn{
+  background-color:#f3692f;
+  border: 1px solid #f3692f ;
+  color:white;
+  
+}
+
+.orange-btn:hover{
+  background-color:#AB4920;
+  border:1px solid #AB4920;
+}
+
+
+.blue-btn{
+  background-color:#3FB2A5;
+  border: 1px solid #3FB2A5;
+  color:white;
+  
+}
+
+.blue-btn:hover{
+  background-color:#2B756C;
+  border: 1px solid #2B756C; 
+}
+
+.not-rounded{
+  border-radius:0px;
+}
+
+.orange-footer{
+    background-color: #ea8a24;
+}
+
+.dark-orange-footer{
+  background-color:#f3692f;
+}
+
+.footer-header{
+  color:white;
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  font-family: 'Mooli', sans-serif;
+  text-align:center;
+  text-shadow: -1px -1px 0 #f3692f, 1px -1px 0 #f3692f, -1px 1px 0 #f3692f, 1px 1px 0 #f3692f;
+}
+
+.white-text{
+  color:white;
+}
+
+.footer-logo{
+  font-family: 'Ranchers', cursive;
+  font-size:30px;
+  text-shadow: -1px -1px 0 #e8476d, 1px -1px 0 #e8476d, -1px 1px 0 #e8476d, 1px 1px 0 #e8476d;
+}
+
+.blur {
+  height:300px;
+  width:100%;
+  background: rgba(255, 255, 255, 0.02);
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(3px);
+-webkit-backdrop-filter: blur(3px);
+}
+
+.drink-card{
+  -webkit-box-shadow: 7px 22px 32px -8px rgba(0,0,0,0.75);
+-moz-box-shadow: 7px 22px 32px -8px rgba(0,0,0,0.75);
+box-shadow: 7px 22px 32px -8px rgba(0,0,0,0.75);
+border-radius: 1em 1em 1em 1em;
+background-color:#FECCDB;
+}
+
+.card-title{
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  font-family: 'Mooli', sans-serif;
+  font-size:24px;
+}
+
+.card-ingredients{
+  font-size:14px;
+}
+
+.card-ingredients, .sub-header{
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  font-family: 'Mooli', sans-serif;
+}
+
+.card-ingredients{
+  margin-top: -10px;
+  margin-left:10px;
+  margin-right:10px;
+}
+
+.card-image{
+ border-radius: 100%;
+ height:150px;
+ width: 150px;
+ display:block;
+ margin:auto;
+}
+
+.card-heading{
+  color:#e8476d;
+  font-family: 'Mooli', sans-serif;
+  margin-left:10px;
+  
+}
+
+.add-btn{
+    background-color:#e8476d;
+    border: 1px solid #e8476d ;
+    color:white;
+    width:40%;
+    display:block;
+    margin:auto;
+    padding:10px;
+}
+
+.add-btn:hover{
+  background-color: #942943;
+ border: 1px solid #942943;
+}
+
+.body-banner{
+  font-family: 'Ranchers', cursive;
+  text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
+  font-size:60px;
+}
+
+.ingredients{
+  margin-top: -5px;
+}
+
+.half-background{
+  background-image: url(../src/Images/form-img.jpg);
+  background-size:cover;
+  background-position:center;
+  border-radius: 1em 0 0 1em;
+}
+
+.white-bg{
+  background-color:#FECCDB;
+ border-radius: 1em 1em 1em 1em;
+ -webkit-box-shadow: 7px 22px 32px -8px rgba(0,0,0,0.75);
+ -moz-box-shadow: 7px 22px 32px -8px rgba(0,0,0,0.75);
+ box-shadow: 7px 22px 32px -8px rgba(0,0,0,0.75);
+}
+.form-header {
+  font-family: 'Ranchers', cursive;
+  font-size:36px;
+  text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
+}
+
