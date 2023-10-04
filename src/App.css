@@ -1,5 +1,7 @@
+
 .App {
-  background-color: 	#FFB392;
+  background-color: #feae5e;
+
 }
 
 .pink-nav{
@@ -96,7 +98,7 @@
 }
 
 .orange-footer{
-    background-color: #ea8a24;
+    background-color: #f59126;
 }
 
 .dark-orange-footer{
@@ -125,28 +127,27 @@
   height:300px;
   width:100%;
   background: rgba(255, 255, 255, 0.02);
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(3px);
--webkit-backdrop-filter: blur(3px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
 }
 
-.drink-card{
-  -webkit-box-shadow: 7px 22px 32px -8px rgba(0,0,0,0.75);
--moz-box-shadow: 7px 22px 32px -8px rgba(0,0,0,0.75);
-box-shadow: 7px 22px 32px -8px rgba(0,0,0,0.75);
-border-radius: 1em 1em 1em 1em;
-background-color:#FECCDB;
+
+
+.pink{
+  background-color:#FECCDB;
 }
 
 .card-title{
   font-family: 'Montserrat', Arial, Helvetica, sans-serif;
   font-family: 'Mooli', sans-serif;
-  font-size:24px;
+  font-size: 1.5rem;
 }
 
+/*
 .card-ingredients{
   font-size:14px;
-}
+}*/
 
 .card-ingredients, .sub-header{
   font-family: 'Montserrat', Arial, Helvetica, sans-serif;
@@ -159,10 +160,26 @@ background-color:#FECCDB;
   margin-right:10px;
 }
 
+.card-instructions{
+  margin-left:10px;
+  margin-right:10px;
+  font-size:0.9rem;
+}
+
+.card-instructions-header{
+  font-family: 'Mooli', sans-serif;
+}
+
+ .card-ingredients-body{
+  height:100px;
+  width:100%;
+  overflow-y:scroll;
+ }
+
 .card-image{
  border-radius: 100%;
- height:150px;
- width: 150px;
+ height:auto;
+ width: 50%;
  display:block;
  margin:auto;
 }
@@ -174,9 +191,11 @@ background-color:#FECCDB;
   
 }
 
+/*x overflow for long text*/
+
 .add-btn{
-    background-color:#e8476d;
-    border: 1px solid #e8476d ;
+    background-color:#942943;
+    border: 1px solid #942943 ;
     color:white;
     width:40%;
     display:block;
@@ -184,9 +203,9 @@ background-color:#FECCDB;
     padding:10px;
 }
 
-.add-btn:hover{
-  background-color: #942943;
- border: 1px solid #942943;
+.add-btn:hover, .recipe-btn:hover{
+  background-color: #3d111c;
+ border: 1px solid #3d111c;
 }
 
 .body-banner{
@@ -218,4 +237,121 @@ background-color:#FECCDB;
   font-size:36px;
   text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
 }
+
+.card {
+  border-radius: 1em 1em 1em 1em;
+  background-color: #e8476d ;
+  border: #FECCDB;
+}
+.card-flip > div {
+  backface-visibility: hidden;
+  transition: transform 300ms;
+  transition-timing-function: linear;
+  width: 100%;
+  height: 550px;
+  margin: 0;
+  display: flex;
+  background-color:#FECCDB;
+
+  -webkit-box-shadow: 7px 22px 32px -8px rgba(0,0,0,0.75);
+  -moz-box-shadow: 7px 22px 32px -8px rgba(0,0,0,0.75);
+  box-shadow: 7px 22px 32px -8px rgba(0,0,0,0.75);
+  border-radius: 1em 1em 1em 1em;
+
+}
+
+.card-front {
+  transform: rotateY(0deg);
+  background-color:#FECCDB;
+}
+
+.card-back {
+  transform: rotateY(180deg);
+  position: absolute;
+  top: 0;
+}
+
+.card-flip:hover .card-front {
+  transform: rotateY(-180deg);
+}
+  
+.card-flip:hover .card-back {
+  transform: rotateY(0deg);
+  background-color: #e8476d ;
+}
+
+.recipe-card{
+  -webkit-box-shadow: 7px 22px 32px -8px rgba(0,0,0,0.75);
+  -moz-box-shadow: 7px 22px 32px -8px rgba(0,0,0,0.75);
+  box-shadow: 7px 22px 32px -8px rgba(0,0,0,0.75);
+  border-radius: 1em 1em 1em 1em;
+  background-color:#FECCDB;
+  height:400px;
+  }
+
+  .recipe-instructions{
+    font-size: 80%;
+    margin-top: -10px;
+  }
+
+  .centered {
+    display:block;
+    margin:auto;
+  }
+
+  .recipe-heading{
+    color:#e8476d ;
+    font-size:16px;
+  }
+  .recipe-title{
+    font-size:20px;
+    font-family: 'Mooli', sans-serif;
+  }
+
+  .recipe-btn {
+    background-color:#FECCDB;
+      border: 1px solid #e8476d ;
+      color:#e8476d;
+      border-radius: 50px;
+  }
+
+  .recipe-btn:hover{
+    background-color:#e8476d;
+    border: 1px solid #e8476d ;
+    color:white;
+  }
+
+  .submit-btn {
+    background-color:#FECCDB;
+      border: 1px solid #e8476d ;
+      color:#e8476d;
+      border-radius: 50px;
+      width:40px;
+      display:block;
+      margin:auto;
+  }
+
+  .editing-icon{
+    color: #e8476d;;
+  }
+
+  .editing-icon:hover{
+    color:black;
+  }
+
+  .blank-body{
+    height:100%;
+  }
+
+  .hidden {
+    display:none;
+  }
+
+  .visibility{
+    display:block;
+  }
+
+
+ 
+
 
