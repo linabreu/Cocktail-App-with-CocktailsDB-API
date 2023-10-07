@@ -7,7 +7,7 @@ import Body from './SearchResults';
 
 export default function Home({apiURL}) {
   return (
-    <div>
+    <div> 
         <SearchBar apiURL = {apiURL}/>
     </div>
   )

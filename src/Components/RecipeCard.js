@@ -7,27 +7,20 @@ import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 
 
-export default function RecipeCard({name, ingredients, instructions, id, apiURL, getFunction}) {
+export default function RecipeCard({name, ingredients, instructions, id, apiURL, getFunction, buttonVisibility}) {
 
-  const [newName, setNewName] = useState('');
-  const [newIngredients, setNewIngredients] = useState('');
-  const [newInstructions, setNewInstructions] = useState('');
-
+  const [newIngredients, setNewIngredients] = useState(ingredients);
+  const [newInstructions, setNewInstructions] = useState(instructions);
   const [editingVisibility, setEditingVisibility] = useState('hidden');
-  const [nonEditingVisibility, setNonEditingVisibility] = useState('visible');
+  
 
-  const [nameEditorVisibility, setNameEditorVisibility] = useState('hidden');
-  const [nameVisibility, setNameVisibility] = useState('visible');
+  const [editButtonMode, setEditButtonMode ] = useState(false);
+  const [editIngredientMode,setEditIngredientMode] = useState(false);
+  const [editInstructionMode,setEditInstructionMode] = useState(false)
 
-  const [ingredientEditorVisibility, setIngredientEditorVisibility] = useState('hidden');
-  const [ingredientVisibility, setIngredientVisibility] = useState('visible');
-
-  const [instructionEditorVisibility, setInstructionEditorVisibility] = useState('hidden');
-  const [instructionVisibility, setInstructionVisibility] = useState('visible');
-
-  const [editingButtonVisibility, setEditingButtonVisibility ] = useState('hidden');
-
+ 
   function deleteDrink(id) {
+    console.log('delete function going')
     fetch(apiURL + `/${id}`, {
       method: 'DELETE',
     }).then(() => getFunction())
@@ -36,7 +29,7 @@ export default function RecipeCard({name, ingredients, instructions, id, apiURL,
   function updateDrink(id) {
     let updatedDrink = 
     {
-      Name: newName,
+      Name: name,
       Ingredients: newIngredients,
       Instructions: newInstructions
     }
@@ -56,46 +49,54 @@ export default function RecipeCard({name, ingredients, instructions, id, apiURL,
           <Row>
               <Col sm = {1}></Col>
               <Col sm = {2}>
-                <Button className = "recipe-btn mb-2 mt-3" onClick = {() => {setEditingVisibility('visible'); setNonEditingVisibility('hidden');}} onDoubleClick={ () => {setEditingVisibility('hidden'); setNonEditingVisibility('visible');}}><i className="bi bi-pencil"></i></Button>
+                <Button className = {`${buttonVisibility} recipe-btn mb-2 mt-3`} onClick = {() => {setEditingVisibility('visible')}} onDoubleClick={ () => {setEditingVisibility('hidden')}}><i className="bi bi-pencil"></i></Button>
               </Col>
               <Col sm = {6}></Col>
               <Col sm = {2}>
-                <Button className = "recipe-btn mb-2 mt-3" onClick = {() => deleteDrink(id)}><i className="bi bi-trash3"></i></Button>
+                <Button className = {`${buttonVisibility} recipe-btn mb-2 mt-3`} onClick = {() => deleteDrink(id)}><i className="bi bi-trash3"></i></Button>
               </Col>
               <Col sm = {1}></Col>
           </Row>
             <Card.Body>
-              {/*Name of drink*/}
-                  <h4 className = {`text-center recipe-title ${nameVisibility}`}>{name}<i onClick = {()=> {setNameEditorVisibility('visible');setNameVisibility('hidden') }} onDoubleClick = {()=> {setNameEditorVisibility('hidden');setNameVisibility('visible') }}className= {`${editingVisibility} bi bi-pencil editing-icon`}></i></h4>
-                  <Form.Group className={`${nameEditorVisibility} mb-1`} controlId="update.NameInput">
-                    <Form.Control className = "width" type="text"/>
-                  </Form.Group>
-
-
-              {/*Ingredients*/}
-                  <div>
-                    <Card.Text className = "recipe-heading">Ingredients <i onClick = {()=> {setIngredientEditorVisibility('visible');setIngredientVisibility('hidden'); setEditingButtonVisibility('visible') }} onDoubleClick = {()=> {setIngredientEditorVisibility('hidden');setIngredientVisibility('visibility');setEditingButtonVisibility('hidden')  }} className= {`${editingVisibility} bi bi-pencil editing-icon`}></i></Card.Text>
-                    <Card.Text className = {`${ingredientVisibility} recipe-instructions`}>
-                        {ingredients}
+              <h4 className = {`text-center recipe-title`}>{name}</h4>
+              <Card.Text className = "recipe-heading">Ingredients 
+                      <i 
+                      className= {`${editingVisibility} bi bi-pencil editing-icon`} 
+                      onClick = {() => {setEditIngredientMode(true); setEditButtonMode(true)}}
+                      onDoubleClick = {() => {setEditIngredientMode(false);setEditButtonMode(false)}}>
+                      </i>
+               </Card.Text>
+              {editIngredientMode === false ? (
+                    <Card.Text className = {`recipe-instructions`}>
+                      {ingredients}
                     </Card.Text>
-                  </div>
-             {/*Editing for Ingredients*/}
-                  <Form.Group className={ingredientEditorVisibility} controlId="exampleForm.ControlInput1">
+              ): (
+                  <Form.Group  controlId="exampleForm.ControlInput1">
+
                   <Form.Control as="textarea" onChange = {(e)=> setNewIngredients(e.target.value)} defaultValue={ingredients} rows={2}/>
                 </Form.Group>
+              ) }
 
-
-              {/*Instructions*/}
-                  <Card.Text className = "recipe-heading">Instructions <i onClick = {()=> {setInstructionEditorVisibility('visible');setInstructionVisibility('hidden');setEditingButtonVisibility('visible') }} onDoubleClick = {()=> {setInstructionEditorVisibility('hidden');setInstructionVisibility('visible');setEditingButtonVisibility('hidden')  }}className= {`${editingVisibility} bi bi-pencil editing-icon`}></i></Card.Text>
-                  <Card.Text className = {`recipe-instructions mb-5 ${instructionVisibility}`}>
+              <Card.Text className = "recipe-heading">Instructions 
+                      <i 
+                        className= {`${editingVisibility} bi bi-pencil editing-icon`} 
+                        onClick = {() => {setEditInstructionMode(true);setEditButtonMode(true)}}
+                        onDoubleClick = {() => {setEditInstructionMode(false);setEditButtonMode(false)}}>
+                      </i>
+               </Card.Text>
+             {editInstructionMode === false ? (
+              <Card.Text className = {`recipe-instructions mb-5`}>
                       {instructions}
-                  </Card.Text>
+              </Card.Text>):
+              (
+                <Form.Group controlId="exampleForm.ControlInput1">
+                <Form.Control as="textarea"   className = "mb-3" onChange = {(e)=> setNewInstructions(e.target.value)}  rows={2} defaultValue={instructions}></Form.Control>
+                </Form.Group>)}
 
-              {/*Editing for Instructions*/}
-                  <Form.Group className= {instructionEditorVisibility} controlId="exampleForm.ControlInput1">
-                  <Form.Control as="textarea"   className = "mb-3" onChange = {(e)=> setNewInstructions(e.target.value)}  rows={2} defaultValue={instructions}></Form.Control>
-                </Form.Group>
-                <Button className = {`${editingButtonVisibility} submit-btn`} onClick = {()=> updateDrink(id)} ><i className="bi bi-check2"></i></Button>
-            </Card.Body>
+              {editButtonMode === false ? (<div></div>):(
+                <Button 
+                  className = {`submit-btn`}
+                  onClick = {()=> {updateDrink(id); setEditButtonMode(false); setEditIngredientMode(false); setEditInstructionMode(false); setEditingVisibility('hidden')}}><i className="bi bi-check2"></i></Button>)}
+          </Card.Body>
                     
         </Card>)}

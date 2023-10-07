@@ -90,13 +90,11 @@ export default function SearchBar({apiURL}) {
 
   return (
     <div>
-    
-    <Container className = "hero-image" fluid>
-    <div className = "blur">
+    <Container  className = "hero-image" fluid>
         <Row className = "pt-5">
             <Col></Col>
             <Col sm={9}>
-                <h1 className = "hero-text mb-3">Search, Sip, Smile</h1>
+                <h1 className = "hero-text mt-5 mb-3">Search, Sip, Smile</h1>
             </Col>
             <Col></Col>
         </Row>
@@ -115,7 +113,6 @@ export default function SearchBar({apiURL}) {
             </Col>
             <Col></Col>
         </Row>
-        </div>
      </Container>
      <SearchResults drinks = {drinks} visibility = {bodyVisibility} apiURL = {apiURL}/>
     </div>

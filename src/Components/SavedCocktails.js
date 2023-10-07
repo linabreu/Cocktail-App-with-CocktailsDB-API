@@ -5,8 +5,9 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import RecipeCard from './RecipeCard';
 
-export default function SavedCocktails({apiURL}) {
+export default function SavedCocktails({apiURL, getFunction, savedCocktailState}) {
 
+  {/*
   const [savedCocktails, setSavedCocktails] = useState([]);
 
   async function getSavedCocktails () {
@@ -14,34 +15,31 @@ export default function SavedCocktails({apiURL}) {
     const data = await res.json()
     console.log(data)
     setSavedCocktails(data)
-  }
+  }*/}
 
   
   useEffect(()=> {
-    getSavedCocktails()
-  })
+    getFunction()
+  },[])
 
 
 
-  console.log(savedCocktails)
+  //console.log(savedCocktails)
 
   return (
-    <div>
-          <>
+    <div className = "orange">
      <Container>
         <div>
           <h2 className = "body-banner text-center mt-3">Your Saved Sips</h2>
           <h4 className = "sub-header text-center">You Have Great Taste</h4>
         </div>
           <Row className = "pt-5">
-      {savedCocktails.map((savedCocktail, index) => 
+      {savedCocktailState.savedCocktails.map((savedCocktail, index) => 
               <Col  md={6} sm={4} lg={4} xs={12} key = {index}>
-                  <RecipeCard name = {savedCocktail.Name} ingredients = {savedCocktail.Ingredients} instructions = {savedCocktail.Instructions} id = {savedCocktail.id} apiURL = {apiURL} getFunction = {getSavedCocktails} key= {index}/>
+                  <RecipeCard name = {savedCocktail.Name} ingredients = {savedCocktail.Ingredients} instructions = {savedCocktail.Instructions} id = {savedCocktail.id} apiURL = {apiURL} getFunction = {getFunction} key= {index}/>
       </Col>)}
           </Row>
     </Container>
-   
-  </>
     </div>
   )
 }

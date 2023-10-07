@@ -1,8 +1,18 @@
 
+
 .App {
   background-color: #feae5e;
-
+  display:flex;
+  flex-direction:column;
+  justify-content: space-between;
+  height: 100vh;
 }
+
+.orange {
+  background-color: #feae5e;
+}
+
+
 
 .pink-nav{
   background-color: #e8476d;
@@ -27,7 +37,9 @@
 .hero-text{
   font-family: 'Montserrat', Arial, Helvetica, sans-serif;
   font-family: 'Mooli', sans-serif;
+  font-family: 'Ranchers', cursive;
   text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
+  letter-spacing: 2px;
 
 }
 
@@ -48,12 +60,10 @@
 }
 
 .hero-image{
-  background-image: url(../src/Images/drink-header.jpeg);
+  background-image: url(../src/Images/hero-drink.jpeg);
   background-size:cover;
   background-position:center;
-  height:300px;
-  
-  
+  height:400px;
 }
 
 .search-bar{
@@ -123,14 +133,15 @@
   text-shadow: -1px -1px 0 #e8476d, 1px -1px 0 #e8476d, -1px 1px 0 #e8476d, 1px 1px 0 #e8476d;
 }
 
+/*
 .blur {
   height:300px;
   width:100%;
   background: rgba(255, 255, 255, 0.02);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(3px);
+  backdrop-filter: blur(9px);
   -webkit-backdrop-filter: blur(3px);
-}
+}*/
 
 
 
@@ -219,7 +230,7 @@
 }
 
 .half-background{
-  background-image: url(../src/Images/form-img.jpg);
+  background-image: url(../src/Images/form-drink.jpeg);
   background-size:cover;
   background-position:center;
   border-radius: 1em 0 0 1em;
@@ -331,6 +342,10 @@
       margin:auto;
   }
 
+  .submit-btn:hover {
+    background-color:#e8476d;
+      border: 1px solid #e8476d ;
+  }
   .editing-icon{
     color: #e8476d;;
   }
@@ -351,6 +366,13 @@
     display:block;
   }
 
+  .homeDiv{
+    height:100%;
+    background-color: #feae5e;
+    display:flex;
+    flex-direction:column;
+    justify-content: space-between;
+  }
 
  
 

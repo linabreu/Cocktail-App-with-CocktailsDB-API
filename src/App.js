@@ -10,8 +10,17 @@ import Footer from './Components/Footer';
 
 function App() {
 
-  const [savedCocktails, setSavedCocktails] = useState([]);
+
   let apiURL = 'https://64ff720bf8b9eeca9e2a26af.mockapi.io/Cocktails';
+
+  const [savedCocktails, setSavedCocktails] = useState([]);
+
+  async function getSavedCocktails () {
+    const res = await fetch(apiURL)
+    const data = await res.json()
+    console.log(data)
+    setSavedCocktails(data)
+  }
 
 
   return (
@@ -19,8 +28,8 @@ function App() {
       <Navigation />
         <Routes>
           <Route path="/" element={ <Home apiURL = {apiURL}/> } />
-          <Route path="/saved-cocktails" element={ <SavedCocktails apiURL = {apiURL}/>} />
-          <Route path="/new-cocktail" element={ <NewCocktail/> } />
+          <Route path="/saved-cocktails" element={ <SavedCocktails apiURL = {apiURL} getFunction={getSavedCocktails} savedCocktailState={{savedCocktails, setSavedCocktails }}/>} />
+          <Route path="/new-cocktail" element={ <NewCocktail apiURL = {apiURL} getFunction={getSavedCocktails} savedCocktailState={{savedCocktails, setSavedCocktails }}/> } />
         </Routes>
         <Footer/>
     </div>

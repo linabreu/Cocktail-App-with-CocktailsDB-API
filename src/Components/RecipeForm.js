@@ -7,22 +7,22 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import RecipeCard from './RecipeCard';
 
-export default function RecipeForm() {
+export default function RecipeForm({getFunction, savedCocktailState, apiURL}) {
     const [newName, setNewName] = useState('');
     const [newIngredients, setNewIngredients] = useState('');
     const [newInstructions, setNewInstructions] = useState('');
-    const [newestRecipe, setNewestRecipe] = useState([])
+    const [newestRecipe, setNewestRecipe] = useState([]);
     const [visibility, setVisibility] = useState("hidden")
-    let API_URL = 'https://64ff720bf8b9eeca9e2a26af.mockapi.io/Cocktails'
 
 
    const getNewestReceipe = async () => {
-        fetch(API_URL)
-        const res = await fetch(API_URL);
+        fetch(apiURL)
+        const res = await fetch(apiURL);
         const data = await res.json();
         let lastestReceipe = (data[data.length - 1]);
         console.log(lastestReceipe);
-        setNewestRecipe(lastestReceipe)
+        setNewestRecipe(lastestReceipe);
+
     }
   
 
@@ -34,13 +34,19 @@ export default function RecipeForm() {
             Instructions: newInstructions
           };
 
-        fetch(API_URL, {
+        fetch(apiURL, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify(newDrinkObj),
-        }).then(getNewestReceipe(newDrinkObj.id));
+        }).then(getNewestReceipe());
+
+        //reset the form
+        setNewName("");
+        setNewIngredients("");
+        setNewInstructions("");
+
       }
 
   return (
@@ -63,24 +69,22 @@ export default function RecipeForm() {
                             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea2">
                                 <Form.Control as="textarea" value={newInstructions} onChange = {(e)=> setNewInstructions(e.target.value)} placeholder="Enter instructions here" rows={5} />
                             </Form.Group>
-                            {/*<Form.Group controlId="formFile" className="mb-5">
-                                    <Form.Label>Cocktail Image</Form.Label>
-                                    <Form.Control type="file" />
-        `````````````````````</Form.Group>*/}
-                            <Button className = "add-btn mb-2" onClick={() => {createNewDrink(); setVisibility('visible');}} >Add Receipe <i className="bi bi-plus-lg"></i></Button>
+                            <Button className = "add-btn mb-2" onClick={() => {createNewDrink(); setVisibility('visible');}} >Add Cocktail <i className="bi bi-plus-lg"></i></Button>
                         </Form> 
                     </Col>
                 </Row>
             </Col>
             <Col sm = {2}></Col>
         </Row>
-            <Row className = {visibility}>
+            <Row className = {`${visibility} orange`}>
             <h2 className = "body-banner text-center mt-3">Looks Delish!</h2>
             <h4 className = "sub-header text-center mb-5">Check Our Your Newest Recipe</h4>
             <Col  md={6} sm={4} lg={4} xs={12} className = "centered">
-                <RecipeCard name = {newestRecipe.Name} ingredients = {newestRecipe.Ingredients} instructions = {newestRecipe.Instructions}/>
+                    <RecipeCard name = {newestRecipe.Name} ingredients = {newestRecipe.Ingredients} 
+                    instructions = {newestRecipe.Instructions} getFunction = {getFunction} 
+                    buttonVisibility = "hidden"/>
             </Col>
-            </Row>
+        </Row>
     </Container>
 
     </div>

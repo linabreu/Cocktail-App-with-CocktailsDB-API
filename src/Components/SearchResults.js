@@ -6,7 +6,7 @@ import DisplayCard from './DisplayCard';
 
 export default function SearchResults({drinks, visibility, apiURL}) {
   return (
-    <>
+    <div className = "orange">
      <Container>
         <div className = {visibility}>
           <h2 className = "body-banner text-center mt-3">Cheers!</h2>
@@ -15,11 +15,11 @@ export default function SearchResults({drinks, visibility, apiURL}) {
           <Row className = "pt-5">
         {drinks.map((drink, index) => 
               <Col  md={6} sm={4} lg={3} xs={12} key = {index}>
-                  <DisplayCard name = {drink.name} ingredients = {drink.ingredients} instructions = {drink.instructions}  image = {drink.image} displayOnly = "true" apiURL = {apiURL} key = {index}/>
+                  <DisplayCard name = {drink.name} ingredients = {drink.ingredients} instructions = {drink.instructions}  image = {drink.image} apiURL = {apiURL} key = {index}/>
           </Col>)}
           </Row>
     </Container>
    
-  </>
+  </div>
   )
 }
