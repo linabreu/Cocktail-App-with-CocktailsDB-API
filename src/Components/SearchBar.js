@@ -25,7 +25,7 @@ export default function SearchBar({apiURL}) {
             redirect: 'follow'
           };
           
-          let baseURL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s='
+          let baseURL = '${yourAPIKey}'
           const res = await fetch(`${baseURL}${searchInputValue}`, requestOptions)
           const data = await res.json();
           data.drinks.forEach((drink) => {
